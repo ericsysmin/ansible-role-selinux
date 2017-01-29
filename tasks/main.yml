@@ -1,0 +1,6 @@
+---
+- name: SELinux | Include distribution variables
+  include_vars: "{{ ansible_os_family  }}.yml"
+
+- name: SELinux | Execute Changes
+  include: "{{ ansible_os_family  }}.yml"
