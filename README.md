@@ -4,7 +4,8 @@ Using this module you are able manage the SELinux configuration on the host. It 
 
 ## Requirements
 
-- `libselinux-python` package is required on the host executing the playbook/role:  
+- `libselinux-python` package is required on the host executing the playbook/role.   (RedHat Family)
+- `python-selinux` package is required on the host executing the playbook/role. (Debian Family)
 
 ## Role Variables
 
