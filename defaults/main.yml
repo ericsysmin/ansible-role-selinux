@@ -1,4 +1,4 @@
 ---
 selinux_policy: targeted
 selinux_state: enforcing
-reboot_host: false
+reboot: false

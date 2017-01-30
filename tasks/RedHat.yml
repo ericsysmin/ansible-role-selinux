@@ -1,26 +1,14 @@
 ---
 # Tasks file for RedHat Family
-
-- name: SELinux | Check SELinux status
-  shell: sestatus | grep mode | awk '{print $NF}'
-  register: current_selinux_mode
-  changed_when: false
-- name: SELinux | Check SELinux status
-  shell: sestatus | grep 'policy name' | awk '{print $NF}'
-  register: current_selinux_policy
-  changed_when: false
 - name: SELinux | Set SELinux policy and state
   selinux: policy={{ selinux_policy }} state={{ selinux_state }}
-  when: current_selinux_mode.stdout != "{{ selinux_state }}" or
-        current_selinux_policy.stdout != "{{ selinux_policy }}"
   register: selinux
 - block:
   - name: SELinux | Restart machine
     shell: sleep 2 && shutdown -r now "Restarting with SELinux Disabled"
     async: 1
     poll: 0
-    become: true
     ignore_errors: true
   - name: SELinux | Wait for the server to come back
     local_action: wait_for host={{ ansible_ssh_host | default(inventory_hostname) }} search_regex=OpenSSH state=started delay=10 timeout=300
-  when: selinux.changed and reboot_host
+  when: selinux.changed and reboot

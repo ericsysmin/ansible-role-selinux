@@ -4,7 +4,7 @@ Using this module you are able manage the SELinux configuration on the host. It 
 
 ## Requirements
 
-- `libselinux-python` package is required on the host executing the role:  
+- `libselinux-python` package is required on the host executing the playbook/role:  
 
 ## Role Variables
 
@@ -12,17 +12,19 @@ Using this module you are able manage the SELinux configuration on the host. It 
 |-----------------------|----------|-----------|---------|
 | `selinux_policy` | No | `targeted` | The name of the SELinux policy to use |
 | `selinux_state` | No | `enforcing` | The SELinux mode to be used. |
-| `reboot_host` | No | `false` | This flag will tell the remote machien to reboot after modifying. |
+| `reboot` | No | `false` | This flag will tell the remote machine to reboot after modifying. |
 
 ## Example Playbooks
 
 ### Example
 ```
 
-- hosts: service_engines
+- hosts: all
   roles:
     - role: ericsysmin.selinux
-      reboot_host: true
+      selinux_state: disabled
+      reboot: true
+
 ```
 
 ## License
