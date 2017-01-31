@@ -7,6 +7,8 @@
   selinux: policy={{ selinux_policy }} state={{ selinux_state }}
   register: selinux
 
+- debug: var=selinux
+
 - block:
   - name: SELinux | Restart machine
     shell: sleep 2 && shutdown -r now "Restarting with SELinux Disabled"
@@ -22,4 +24,4 @@
         search_regex=".*OpenSSH*"
         delay=10
         timeout=300
-    when: selinux.changed and reboot
+  when: selinux.changed and reboot
