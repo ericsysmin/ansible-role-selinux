@@ -17,8 +17,9 @@
     become: false
     local_action:
       module: wait_for
-        host="{{ ansible_ssh_host | default(inventory_hostname) }}"
-        port="{{ ansible_ssh_port | default('22') }}"
-        delay=30
+        host="{{ ansible_host | default(inventory_hostname) }}"
+        port="{{ ansible_port | default('22') }}"
+        search_regex=".*OpenSSH*"
+        delay=10
         timeout=300
     when: selinux.changed and reboot
