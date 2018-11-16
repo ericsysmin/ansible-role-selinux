@@ -1,5 +1,7 @@
 # ericsysmin.selinux
 
+[![Build Status](https://travis-ci.org/ericsysmin/ansible-role-selinux.svg?branch=master)](https://travis-ci.org/ericsysmin/ansible-role-selinux)
+
 Using this module you are able manage the SELinux configuration on the host. It can also reboot the host if required.
 
 ## Requirements
