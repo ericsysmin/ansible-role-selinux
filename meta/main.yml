@@ -1,6 +1,8 @@
 ---
 galaxy_info:
-  author: Eric Anderson
+  author: ericsysmin
+  role_name: selinux
+  company: Avi Networks
   description: Manage SELinux settings on a host
   issue_tracker_url: https://github.com/ericsysmin/ansible-role-selinux/issues
   license: MIT
